@@ -1,2 +1,3 @@
 bolt-app/.env
 **/.ropeproject
+bolt-app/**/__pycache__
