@@ -14,4 +14,4 @@ This started as just a brainfuck substitution (it still is for now), but it's go
 - [ ] Input : use 2 Emojis to Open and close the input.
 
 
-### Made for [Summer of Making](https://summer.hack.club/wg) and ### [Thunder YSWS](https://hackclub.slack.com/archives/C06V2GEV3MY) !!
+### Made for [Summer of Making](https://summer.hack.club/wg) and [Thunder YSWS](https://hackclub.slack.com/archives/C06V2GEV3MY) !!
