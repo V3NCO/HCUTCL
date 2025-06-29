@@ -12,7 +12,7 @@ def hcul_to_brainfuck(ack, respond, command):
     ack() # Acknowledge request for slack
     command_text = f"{command['text']}"
 
-    replacement = {":upvote:": "<", ":downvote:": ">", ":yay:": "+", ":heavysob:": "-", ":pf:": ".", ":3c:": ",", ":dino-drake-yea:": "[", ":dino-drake-nah:": "]", " ": ""}
+    replacement = {":upvote:": ">", ":downvote:": "<", ":yay:": "+", ":heavysob:": "-", ":pf:": ".", ":sadge:": ".", ":3c:": ",", ":dino-drake-yea:": "[", ":dino-drake-nah:": "]", " ": ""}
 
     for o, n in replacement.items():
         command_text = command_text.replace(o, n)
@@ -25,7 +25,7 @@ def brainfuck_to_hcul(ack, respond, command):
     ack() # Acknowledge request for slack
     command_text = f"{command['text']}"
 
-    replacement = {":upvote:": "<", ":downvote:": ">", ":yay:": "+", ":heavysob:": "-", ":pf:": ".", ":3c:": ",", ":dino-drake-yea:": "[", ":dino-drake-nah:": "]"}
+    replacement = {":upvote:": ">", ":downvote:": "<", ":yay:": "+", ":heavysob:": "-", ":pf:": ".", ":3c:": ",", ":dino-drake-yea:": "[", ":dino-drake-nah:": "]"}
 
     for o, n in replacement.items():
         command_text = command_text.replace(n, o)
