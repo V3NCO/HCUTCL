@@ -1,5 +1,0 @@
-name: "Dockerize Bolt App"
-description: "Make the Bolt app into a cocker container"
-runs:
-  using: docker
-  image: "Dockerfile"
