@@ -62,7 +62,3 @@ def hcul(input):
                 pass
         i += 1
     return output
-
-
-
-print(hcul(":upvote::yay::yay::yay::yay::yay::yay::yay::yay::dino-drake-yea::downvote::yay::yay::yay::yay::yay::yay::yay::yay::yay::upvote::heavysob::dino-drake-nah::downvote::pf::upvote::yay::yay::yay::yay::dino-drake-yea::downvote::yay::yay::yay::yay::yay::yay::yay::upvote::heavysob::dino-drake-nah::downvote::yay::pf::yay::yay::yay::yay::yay::yay::yay::pf::pf::yay::yay::yay::pf::upvote::upvote::yay::yay::yay::yay::yay::yay::dino-drake-yea::downvote::yay::yay::yay::yay::yay::yay::yay::upvote::heavysob::dino-drake-nah::downvote::yay::yay::pf::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::pf::upvote::yay::yay::yay::yay::yay::yay::dino-drake-yea::downvote::yay::yay::yay::yay::yay::yay::yay::yay::yay::upvote::heavysob::dino-drake-nah::downvote::yay::pf::downvote::pf::yay::yay::yay::pf::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::pf::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::heavysob::pf::upvote::upvote::upvote::yay::yay::yay::yay::dino-drake-yea::downvote::yay::yay::yay::yay::yay::yay::yay::yay::upvote::heavysob::dino-drake-nah::downvote::yay::pf:"))
