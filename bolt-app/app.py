@@ -2,8 +2,11 @@ from dotenv import load_dotenv
 import os
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-
-load_dotenv()
+from hcul import InputFieldCountException, NoInputFieldException, hcul
+try:
+    load_dotenv()
+except:
+    pass
 
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 
