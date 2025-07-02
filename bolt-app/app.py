@@ -20,8 +20,7 @@ consoleHandler = logging.StreamHandler(stdout) #set streamhandler to stdout
 consoleHandler.setFormatter(logFormatter)
 logger.addHandler(consoleHandler)
 
-
-app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
+app = App(token=os.environ.get("SLACK_BOT_TOKEN"), logger=logger)
 
 @app.command("/hcul-to-brainfuck")
 def hcul_to_brainfuck(ack, respond, command):
@@ -93,6 +92,245 @@ def run_code(ack, respond, command):
     logger.info(f"Input : {command['text']}")
     logger.info(f"Anwser : {anwser}")
     respond(anwser)
+
+@app.command("/hcul-help")
+def help(ack, respond, command):
+    ack()
+    respond(
+        {
+	"blocks": [
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": ":skulk: Emojis list",
+				"emoji": True
+			}
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*Emoji*"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Function*"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":upvote:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`>` from Brainfuck"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":downvote:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`<` from Brainfuck"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":yay:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`+` from Brainfuck"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":heavysob:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`-` from Brainfuck"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":pf:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`.` from Brainfuck, outputs as an ASCII Character"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":sadge:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`.` from Brainfuck, outputs as a number"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":3c:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`,` from Brainfuck"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":dino-drake-yea:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`[` from Brainfuck"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "plain_text",
+					"text": ":dino-drake-nah:",
+					"emoji": True
+				},
+				{
+					"type": "mrkdwn",
+					"text": "`]` from Brainfuck"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+					"type": "section",
+					"fields": [
+						{
+							"type": "plain_text",
+							"text": ":uuh:",
+							"emoji": True
+						},
+						{
+							"type": "mrkdwn",
+							"text": "Open the input field which will be used to give data to `:3c:`."
+						}
+					]
+		},
+		{
+			"type": "divider"
+		},
+		{
+					"type": "section",
+					"fields": [
+						{
+							"type": "plain_text",
+							"text": ":noooovanish:",
+							"emoji": True
+						},
+						{
+							"type": "mrkdwn",
+							"text": "Close the input field which will be used to give data to `:3c:`."
+						}
+					]
+		},
+		{
+					"type": "section",
+					"text": {
+						"type": "mrkdwn",
+						"text": "If you use :3c: at any point *you need* to add an input field with :uuh:Yourtexthere:noooovanish:"
+					}
+		},
+		{
+					"type": "section",
+					"text": {
+						"type": "mrkdwn",
+						"text": "You can only have one input field and you obviously *have to open and close it*"
+					}
+		},
+		{
+					"type": "section",
+					"text": {
+						"type": "mrkdwn",
+						"text": "Commands list: `/hcul-help`, `/brainfuck-to-hcul`, `/hcul-to-brainfuck`, `/run-hcutcl`"
+					}
+		}
+	]
+        }
+    )
 
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
