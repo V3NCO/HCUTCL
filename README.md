@@ -12,7 +12,7 @@ This started as just a brainfuck substitution (it still is for now), but it's go
 - [x] Custom `.` from brainfuck alternative
   - [x] Different Emojis for Variants : Output in ASCII, Hex? or Number
 - [x] Input : use 2 Emojis to Open and close the input.
-- [ ] Help command that uses ***Block kit*** *(Block kit is required for #thunder)*
+- [x] Help command that uses ***Block kit*** *(Block kit is required for #thunder)*
 
 ## Definitions
 
