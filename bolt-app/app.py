@@ -167,7 +167,18 @@ def run_code(ack, respond, command):
         anwser = "You tried to get data from an input that does not exist."
     logger.info(f"Input : {command['text']}")
     logger.info(f"Anwser : {anwser}")
-    respond(anwser)
+    user = app.client.users_info(user=command['user_id'])
+    respond(
+        {
+            "blocks" : [
+                {"type": "context","elements": [{"type": "image","image_url": f"{user['user']['profile']['image_32']}","alt_text": f"{user['user']['profile']['display_name']}'s pfp"},{"type": "mrkdwn","text": f"*{user['user']['profile']['display_name']}* Asked: "}]},
+                {"type": "section", "text": {"type": "mrkdwn", "text": f">:idea-dino: Run this Hackclub Universal Turing Complete Language Code:\n{command['text']}"}},
+                {"type": "divider"},
+                {"type": "section", "text": {"type": "mrkdwn", "text": f"*Output* :\n`{anwser}`"}}
+            ],
+            "response_type": "in_channel"
+        }
+    )
 
 @app.command("/hcul-help")
 def help(ack, respond, command):
