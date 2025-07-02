@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 import os
 import logging
 from sys import stdout
-import json
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from hcul import InputFieldCountException, NoInputFieldException, hcul
@@ -60,23 +59,100 @@ def brainfuck_to_hcul(ack, respond, command, body, client):
         command_text = command_text.replace(n, o)
     logger.info(f"Input : {command['text']}")
     logger.info(f"Output : {command_text}")
-    user = app.client.users_info(user=command['user_id'])
-    respond(
-        {
-            "blocks" : [
-                {"type": "context","elements": [{"type": "image","image_url": f"{user['user']['profile']['image_32']}","alt_text": f"{user['user']['profile']['display_name']}'s pfp"},{"type": "mrkdwn","text": f"*{user['user']['profile']['display_name']}* Asked: "}]},
-                {"type": "section", "text": {"type": "mrkdwn", "text": f">:idea-dino: Convert this Brainfuck code into Hackclub Universal Language :\n{command['text']}"}},
-                {"type": "divider"},
-                {"type": "section", "text": {"type": "mrkdwn", "text": f"Output :\n{command_text}"}}
-            ],
-            "response_type": "in_channel"
+    client.views_open(
+        trigger_id=body["trigger_id"],
+        view = {
+            "type": "modal",
+            "callback_id": "bftohcul_modal",
+            "title": {
+                "type": "plain_text",
+                "text": ":pf: Brainfuck to HCUL",
+                "emoji": True
+            },
+            "submit": {
+                "type": "plain_text",
+                "text": "Convert!"
+            },
+            "close": {
+                "type": "plain_text",
+                "text": "Cancel"
+            },
+            "blocks": [
+                {
+                    "type": "actions",
+                    "block_id": "action_1",
+                    "elements": [
+                        {
+                            "type": "conversations_select",
+                            "default_to_current_conversation": True,
+                            "action_id": "conv_select",
+                            "response_url_enabled": True,
+                            "placeholder": {
+                                "type": "plain_text",
+                                "text": "Select a conversation to send the output in"
+                            },
+                            "filter": {
+                                "include": ["public"],
+                                "exclude_bot_users": True
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "input",
+					"block_id": "brainfuck_input",
+                    "element": {
+                        "type": "plain_text_input",
+                        "multiline": True,
+                        "action_id": "brainfuck_subinput"
+                    },
+                    "label": {
+                        "type": "plain_text",
+                        "text": "Your code here :yay:",
+                        "emoji": True
+                    }
+                }
+            ]
         }
     )
+    # user = app.client.users_info(user=command['user_id'])
+    # respond(
+    #     {
+    #         "blocks" : [
+    #             {"type": "context","elements": [{"type": "image","image_url": f"{user['user']['profile']['image_32']}","alt_text": f"{user['user']['profile']['display_name']}'s pfp"},{"type": "mrkdwn","text": f"*{user['user']['profile']['display_name']}* Asked: "}]},
+    #             {"type": "section", "text": {"type": "mrkdwn", "text": f">:idea-dino: Convert this Brainfuck code into Hackclub Universal Language :\n{command['text']}"}},
+    #             {"type": "divider"},
+    #             {"type": "section", "text": {"type": "mrkdwn", "text": f"Output :\n{command_text}"}}
+    #         ],
+    #         "response_type": "in_channel"
+    #     }
+    # )
 
-@app.view("view-id")
-def view_submission(ack, body, logger):
+
+@app.view("bftohcul_modal")
+def view_submission(ack, body, logger, respond, client):
     ack()
-    logger.info(body["view"]["state"]["values"])
+    submitted = body["view"]["state"]["values"]["brainfuck_input"]["brainfuck_subinput"]["value"]
+    channel = body["view"]["state"]["values"]["action_1"]["conv_select"]
+    logger.info(submitted)
+    logger.info(channel)
+    replacement = {":upvote:": ">", ":downvote:": "<", ":yay:": "+", ":heavysob:": "-", ":pf:": ".", ":3c:": ",", ":dino-drake-yea:": "[", ":dino-drake-nah:": "]"}
+    command_text = submitted
+    for o, n in replacement.items():
+        command_text = command_text.replace(n, o)
+
+    user = app.client.users_info(user=body["user"]["id"])
+    try:
+        client.chat_postMessage(channel=channel["selected_conversation"],
+        blocks = [
+                    {"type": "context","elements": [{"type": "image","image_url": f"{user['user']['profile']['image_32']}","alt_text": f"{user['user']['profile']['display_name']}'s pfp"},{"type": "mrkdwn","text": f"*{user['user']['profile']['display_name']}* Asked: "}]},
+                    {"type": "section", "text": {"type": "mrkdwn", "text": f">:idea-dino: Convert this Brainfuck code into Hackclub Universal Language :\n{submitted}"}},
+                    {"type": "divider"},
+                    {"type": "section", "text": {"type": "mrkdwn", "text": f"Output :\n{command_text}"}}
+                ]
+        )
+    except:
+        logger.exception("Failed to post a message")
 
 @app.command("/run-hcutcl")
 def run_code(ack, respond, command):
