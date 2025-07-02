@@ -27,7 +27,7 @@ Emoji | Image of the Emoji | Purpose | Closest Brainfuck Equivalent
 :3c:|<img src="https://emoji.slack-edge.com/T0266FRGM/3c/b853811bf0d800af.png" width=32>|Accept one byte of input, storing its value in the byte at the data pointer.|`,`
 :dino-drake-yea:|<img src="https://emoji.slack-edge.com/T0266FRGM/dino-drake-yea/f30e5dfee629a60f.png" width=32>|If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching :dino-drake-nah: command.|`[`
 :dino-drake-nah:|<img src="https://emoji.slack-edge.com/T0266FRGM/dino-drake-nah/ee4480a364d9ab18.png" width=32> |If the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching :dino-drake-yea: command. |`]`
-:uuh:|<img src="https://emoji.slack-edge.com/T0266FRGM/uuh/7ed2e8f6488ba1f3.png" width=32>|Open the input field which will be used to give data to `,`.|
-:noooovanish:|<img src="https://emoji.slack-edge.com/T0266FRGM/noooovanish/ebcb48d27469a989.png" width=32>|Close the input field which will be used to give data to `,`.|
+:uuh:|<img src="https://emoji.slack-edge.com/T0266FRGM/uuh/7ed2e8f6488ba1f3.png" width=32>|Open the input field which will be used to give data to `:3c:`.|
+:noooovanish:|<img src="https://emoji.slack-edge.com/T0266FRGM/noooovanish/ebcb48d27469a989.png" width=32>|Close the input field which will be used to give data to `:3c:`.|
 
 ### Made for [Summer of Making](https://summer.hack.club/wg) and [Thunder YSWS](https://hackclub.slack.com/archives/C06V2GEV3MY) !!
