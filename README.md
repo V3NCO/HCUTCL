@@ -30,4 +30,18 @@ Emoji | Image of the Emoji | Purpose | Closest Brainfuck Equivalent
 :uuh:|<img src="https://emoji.slack-edge.com/T0266FRGM/uuh/7ed2e8f6488ba1f3.png" width=32>|Open the input field which will be used to give data to `:3c:`.|
 :noooovanish:|<img src="https://emoji.slack-edge.com/T0266FRGM/noooovanish/ebcb48d27469a989.png" width=32>|Close the input field which will be used to give data to `:3c:`.|
 
+## Usage
+- If you use :3c: at any point you need to add an input field with :uuh:[Yourtexthere]:noooovanish:
+- You can only have ***one input*** field and you obviously have to open ***and*** close it
+
+### Commands
+Command | Description | Example Image of command output
+:-------|:------:|------:
+`/hcul-help`|Help command showing usage guide |<img width="759" height="826" alt="image" src="https://github.com/user-attachments/assets/449d720e-465e-48a3-8553-04ce34abbe82" />
+`/brainfuck-to-hcul`|Converts Brainfuck code to HackClub turing complete Universal Language |<img width="681" height="311" alt="image" src="https://github.com/user-attachments/assets/65f2d037-3a2c-4a4e-a797-128de0a8385c" />
+`/hcul-to-brainfuck`|Converts HackClub turing complete Universal Language code back to Brainfuck |<img width="681" height="311" alt="image" src="https://github.com/user-attachments/assets/a568e995-f000-42e3-ba27-8b31405efc28" />
+`/run-hcutcl`|The most important command : Interprets/runs your HackClub Turing Complete Universal Language code and gives you the output|<img width="671" height="267" alt="image" src="https://github.com/user-attachments/assets/67959d5e-1249-4af8-9c6c-a7836e0df850" />
+
+
+
 ### Made for [Summer of Making](https://summer.hack.club/wg) and [Thunder YSWS](https://hackclub.slack.com/archives/C06V2GEV3MY) !!
