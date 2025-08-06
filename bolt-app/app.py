@@ -174,7 +174,7 @@ def run_code(ack, respond, command):
                 {"type": "context","elements": [{"type": "image","image_url": f"{user['user']['profile']['image_32']}","alt_text": f"{user['user']['profile']['display_name']}'s pfp"},{"type": "mrkdwn","text": f"*{user['user']['profile']['display_name']}* Asked: "}]},
                 {"type": "section", "text": {"type": "mrkdwn", "text": f">:idea-dino: Run this Hackclub Universal Turing Complete Language Code:\n{command['text']}"}},
                 {"type": "divider"},
-                {"type": "section", "text": {"type": "mrkdwn", "text": f"*Output* :\n`{anwser}`"}}
+                {"type": "section", "text": {"type": "mrkdwn", "text": f"*Output* :\n{anwser}"}}
             ],
             "response_type": "in_channel"
         }
